@@ -1,0 +1,37 @@
+---
+import { useTranslations } from '@/i18n/ui';
+import type { Locale } from '@/lib/site';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  href: string;
+  pubDate: Date;
+  tags?: string[];
+}
+const { locale, title, description, href, pubDate, tags = [] } = Astro.props;
+const t = useTranslations(locale);
+const dateStr = new Intl.DateTimeFormat(t.meta.htmlLang, {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(pubDate);
+---
+
+<article class="group relative flex flex-col rounded-xl border border-line bg-white p-6 transition-all hover:border-brand hover:shadow-lg">
+  <div class="flex flex-wrap items-center gap-2">
+    <time datetime={pubDate.toISOString()} class="text-xs font-medium text-muted">{dateStr}</time>
+    {tags.slice(0, 2).map((tag) => (
+      <span class="rounded-full bg-surface-soft px-2 py-0.5 text-xs text-ink-soft">{tag}</span>
+    ))}
+  </div>
+  <h3 class="mt-3 text-lg leading-snug">
+    <a href={href} class="after:absolute after:inset-0 group-hover:text-brand">{title}</a>
+  </h3>
+  <p class="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{description}</p>
+  <span class="relative mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+    {t.blog.readMore}
+    <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
+  </span>
+</article>

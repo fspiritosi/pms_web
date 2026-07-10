@@ -1,0 +1,141 @@
+@import 'tailwindcss';
+
+/* Tipografías self-hosted (sin CDN) */
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/inter';
+
+@theme {
+  /* Paleta de marca PMS */
+  --color-brand: #0000ff;
+  --color-brand-600: #0000e0;
+  --color-brand-700: #0000b8;
+  --color-brand-50: #eef0ff;
+  --color-brand-100: #dfe3ff;
+
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #3d3d47;
+  --color-muted: #6b7280;
+  --color-line: #e6e8ef;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f6f7fb;
+
+  /* Tipografías */
+  --font-display: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Radios */
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+}
+
+/* Estilos base en @layer base para que las utilidades de Tailwind (text-white,
+   etc.) puedan sobrescribirlos. Sin la capa, estas reglas ganarían siempre. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-surface);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--color-ink);
+  }
+}
+
+/* Accesibilidad: foco visible y consistente */
+:where(a, button, input, textarea, select, summary):focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Contenedor base del sitio */
+.container-pms {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-pms {
+    padding-inline: 2rem;
+  }
+}
+
+/* Contenido renderizado desde Markdown (blog y soluciones) */
+.prose-pms {
+  color: var(--color-ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.prose-pms > * + * {
+  margin-top: 1.25em;
+}
+.prose-pms h2 {
+  margin-top: 2em;
+  font-size: 1.5rem;
+}
+.prose-pms h3 {
+  margin-top: 1.6em;
+  font-size: 1.25rem;
+}
+.prose-pms a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-pms ul,
+.prose-pms ol {
+  padding-left: 1.5rem;
+}
+.prose-pms ul {
+  list-style: disc;
+}
+.prose-pms ol {
+  list-style: decimal;
+}
+.prose-pms li + li {
+  margin-top: 0.4em;
+}
+.prose-pms blockquote {
+  border-left: 3px solid var(--color-brand);
+  padding-left: 1rem;
+  color: var(--color-muted);
+  font-style: italic;
+}
+.prose-pms code {
+  background: var(--color-surface-soft);
+  padding: 0.15em 0.4em;
+  border-radius: 0.35rem;
+  font-size: 0.9em;
+}
+.prose-pms img {
+  border-radius: var(--radius-lg);
+}
+.prose-pms strong {
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

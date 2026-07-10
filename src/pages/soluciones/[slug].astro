@@ -1,0 +1,28 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SolutionDetail from '@/components/pages/SolutionDetail.astro';
+import { getSolutions } from '@/lib/content';
+
+export const getStaticPaths = (async () => {
+  const solutions = await getSolutions('es');
+  return solutions.map(({ entry, slug }) => ({
+    params: { slug },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const locale = 'es' as const;
+const { entry } = Astro.props;
+const { slug } = Astro.params;
+---
+
+<BaseLayout
+  title={`${entry.data.title} · PMS`}
+  description={entry.data.summary}
+  locale={locale}
+  esPath={`/soluciones/${slug}/`}
+  enPath={`/en/solutions/${slug}/`}
+>
+  <SolutionDetail locale={locale} entry={entry} />
+</BaseLayout>

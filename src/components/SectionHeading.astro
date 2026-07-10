@@ -1,0 +1,16 @@
+---
+interface Props {
+  kicker?: string;
+  title: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+}
+const { kicker, title, subtitle, align = 'left' } = Astro.props;
+const alignCls = align === 'center' ? 'text-center mx-auto' : '';
+---
+
+<div class:list={['max-w-2xl', alignCls]}>
+  {kicker && <p class="text-sm font-semibold uppercase tracking-wider text-brand">{kicker}</p>}
+  <h2 class="mt-2 text-3xl md:text-4xl">{title}</h2>
+  {subtitle && <p class="mt-4 text-lg text-muted">{subtitle}</p>}
+</div>

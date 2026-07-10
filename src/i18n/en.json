@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "locale": "en",
+    "htmlLang": "en-US",
+    "label": "English"
+  },
+  "nav": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "company": "Company",
+    "about": "About",
+    "blog": "News",
+    "contact": "Contact",
+    "login": "Log in",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "home": {
+    "heroKicker": "Software licensing",
+    "heroTitle": "Software solutions that help your business grow",
+    "heroSubtitle": "We build systems and license them so you work with reliable, up-to-date technology backed by real support.",
+    "heroCtaPrimary": "See solutions",
+    "heroCtaSecondary": "Talk to us",
+    "solutionsTitle": "Our solutions",
+    "solutionsSubtitle": "Ready-to-license systems, built for your operation.",
+    "solutionsCta": "See all solutions",
+    "whyTitle": "Why choose PMS",
+    "why": [
+      { "title": "In-house development", "description": "We build the software, so it evolves with your needs." },
+      { "title": "Real support", "description": "A team that answers and stays with you, not a form that goes nowhere." },
+      { "title": "Continuous updates", "description": "Improvements and new features without switching systems." },
+      { "title": "Licensing model", "description": "Clear, predictable costs with no surprises." }
+    ],
+    "newsTitle": "Latest news",
+    "newsCta": "See all news",
+    "ctaBannerTitle": "Ready to get started?",
+    "ctaBannerText": "Tell us what you need and we'll show you how we can help.",
+    "ctaBannerButton": "Get in touch"
+  },
+  "solutions": {
+    "title": "Solutions",
+    "subtitle": "Systems we develop and license to our clients.",
+    "learnMore": "Learn more",
+    "comingSoon": "Coming soon",
+    "featuresTitle": "Features",
+    "backToSolutions": "Back to solutions"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "We are a company dedicated to software licensing.",
+    "body": "At Perez Marzo Systems Development we build software solutions and license them to our clients. We combine in-house development, close support and continuous improvement so technology becomes an advantage, not a problem.",
+    "valuesTitle": "What defines us"
+  },
+  "blog": {
+    "title": "News",
+    "subtitle": "Updates, launches and news from PMS.",
+    "readMore": "Read more",
+    "backToBlog": "Back to news",
+    "publishedOn": "Published on",
+    "empty": "We'll publish news soon."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Choose the channel that best fits what you need.",
+    "commercialTitle": "Commercial",
+    "commercialText": "Questions about solutions, licensing and quotes.",
+    "supportTitle": "Support",
+    "supportText": "Already a client and need help? Write to us.",
+    "formTitle": "Send us a message",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formCompany": "Company",
+    "formSubject": "Subject",
+    "formType": "Inquiry type",
+    "formTypeCommercial": "Commercial",
+    "formTypeSupport": "Support",
+    "formMessage": "Message",
+    "formSubmit": "Send message",
+    "formNote": "We'll send you a confirmation by email.",
+    "formSuccess": "Thank you! We received your message and will get back to you shortly.",
+    "faqTitle": "Frequently asked questions"
+  },
+  "faq": [
+    {
+      "q": "What does Perez Marzo Systems Development do?",
+      "a": "We develop software solutions and license them to our clients, with ongoing support and updates."
+    },
+    {
+      "q": "How does licensing work?",
+      "a": "You access the system through a license. Billing and payments are handled through our accounting system; this site is informational."
+    },
+    {
+      "q": "Do you offer technical support?",
+      "a": "Yes. You get a real support team that answers and stays with you. Reach out from the contact section."
+    },
+    {
+      "q": "Can I try a solution before signing up?",
+      "a": "Contact our commercial channel and we'll arrange a demo based on your case."
+    }
+  ],
+  "footer": {
+    "tagline": "We develop and license software.",
+    "solutions": "Solutions",
+    "company": "Company",
+    "contact": "Contact",
+    "legal": "All rights reserved.",
+    "commercial": "Commercial",
+    "support": "Support"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you're looking for doesn't exist or has moved.",
+    "cta": "Back to home"
+  }
+}

@@ -1,0 +1,43 @@
+---
+import Section from '@/components/Section.astro';
+import { render, type CollectionEntry } from 'astro:content';
+import { useTranslations, path } from '@/i18n/ui';
+import type { Locale } from '@/lib/site';
+
+interface Props {
+  locale: Locale;
+  entry: CollectionEntry<'blog'>;
+}
+const { locale, entry } = Astro.props;
+const t = useTranslations(locale);
+const { Content } = await render(entry);
+const d = entry.data;
+const dateStr = new Intl.DateTimeFormat(t.meta.htmlLang, {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(d.pubDate);
+---
+
+<Section>
+  <div class="mx-auto max-w-3xl">
+    <a href={path('blog', locale)} class="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-brand">
+      <span aria-hidden="true">←</span>
+      {t.blog.backToBlog}
+    </a>
+
+    <div class="mt-6 flex flex-wrap items-center gap-2">
+      <time datetime={d.pubDate.toISOString()} class="text-sm text-muted">{dateStr}</time>
+      {d.tags.map((tag) => (
+        <span class="rounded-full bg-surface-soft px-2.5 py-0.5 text-xs text-ink-soft">{tag}</span>
+      ))}
+    </div>
+
+    <h1 class="mt-4 text-4xl leading-tight md:text-5xl">{d.title}</h1>
+    <p class="mt-4 text-lg text-ink-soft">{d.description}</p>
+
+    <article class="prose-pms mt-10">
+      <Content />
+    </article>
+  </div>
+</Section>

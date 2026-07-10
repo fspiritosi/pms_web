@@ -1,0 +1,34 @@
+---
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import SolutionCard from '@/components/SolutionCard.astro';
+import { useTranslations, path } from '@/i18n/ui';
+import { getSolutions } from '@/lib/content';
+import type { Locale } from '@/lib/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const solutions = await getSolutions(locale);
+const solutionsBase = path('solutions', locale);
+---
+
+<Section>
+  <SectionHeading kicker={t.home.heroKicker} title={t.solutions.title} subtitle={t.solutions.subtitle} />
+  <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      solutions.map((s) => (
+        <SolutionCard
+          locale={locale}
+          title={s.entry.data.title}
+          tagline={s.entry.data.tagline}
+          summary={s.entry.data.summary}
+          href={`${solutionsBase}${s.slug}/`}
+          available={s.entry.data.available}
+        />
+      ))
+    }
+  </div>
+</Section>

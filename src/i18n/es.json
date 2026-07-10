@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "locale": "es",
+    "htmlLang": "es-AR",
+    "label": "Español"
+  },
+  "nav": {
+    "home": "Inicio",
+    "solutions": "Soluciones",
+    "company": "Empresa",
+    "about": "Nosotros",
+    "blog": "Noticias",
+    "contact": "Contacto",
+    "login": "Ingresar",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "home": {
+    "heroKicker": "Licenciamiento de software",
+    "heroTitle": "Soluciones informáticas que hacen crecer tu empresa",
+    "heroSubtitle": "Desarrollamos sistemas y los licenciamos para que trabajes con tecnología confiable, actualizada y con soporte real.",
+    "heroCtaPrimary": "Ver soluciones",
+    "heroCtaSecondary": "Hablar con nosotros",
+    "solutionsTitle": "Nuestras soluciones",
+    "solutionsSubtitle": "Sistemas listos para licenciar, pensados para tu operación.",
+    "solutionsCta": "Ver todas las soluciones",
+    "whyTitle": "Por qué elegir PMS",
+    "why": [
+      { "title": "Desarrollo propio", "description": "Construimos el software, así que evoluciona con tus necesidades." },
+      { "title": "Soporte real", "description": "Un equipo que responde y acompaña, no un formulario sin respuesta." },
+      { "title": "Actualizaciones continuas", "description": "Mejoras y nuevas funciones sin que tengas que migrar de sistema." },
+      { "title": "Modelo por licencia", "description": "Costos claros y previsibles, sin sorpresas." }
+    ],
+    "newsTitle": "Últimas noticias",
+    "newsCta": "Ver todas las noticias",
+    "ctaBannerTitle": "¿Listo para empezar?",
+    "ctaBannerText": "Contanos qué necesitás y te mostramos cómo podemos ayudarte.",
+    "ctaBannerButton": "Contactar"
+  },
+  "solutions": {
+    "title": "Soluciones",
+    "subtitle": "Sistemas que desarrollamos y licenciamos a nuestros clientes.",
+    "learnMore": "Conocer más",
+    "comingSoon": "Próximamente",
+    "featuresTitle": "Características",
+    "backToSolutions": "Volver a soluciones"
+  },
+  "about": {
+    "title": "Nosotros",
+    "subtitle": "Somos una empresa dedicada al licenciamiento de software.",
+    "body": "En Perez Marzo Systems Development desarrollamos soluciones informáticas y las licenciamos a nuestros clientes. Combinamos desarrollo propio, soporte cercano y una mejora continua para que la tecnología sea una ventaja y no un problema.",
+    "valuesTitle": "Lo que nos define"
+  },
+  "blog": {
+    "title": "Noticias",
+    "subtitle": "Novedades, lanzamientos y actualizaciones de PMS.",
+    "readMore": "Leer más",
+    "backToBlog": "Volver a noticias",
+    "publishedOn": "Publicado el",
+    "empty": "Pronto publicaremos novedades."
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Elegí el canal que mejor se ajuste a lo que necesitás.",
+    "commercialTitle": "Comercial",
+    "commercialText": "Consultas sobre soluciones, licencias y presupuestos.",
+    "supportTitle": "Soporte",
+    "supportText": "¿Ya sos cliente y necesitás ayuda? Escribinos.",
+    "formTitle": "Envianos un mensaje",
+    "formName": "Nombre",
+    "formEmail": "Email",
+    "formCompany": "Empresa",
+    "formSubject": "Asunto",
+    "formType": "Tipo de consulta",
+    "formTypeCommercial": "Comercial",
+    "formTypeSupport": "Soporte",
+    "formMessage": "Mensaje",
+    "formSubmit": "Enviar mensaje",
+    "formNote": "Te enviaremos una confirmación por email.",
+    "formSuccess": "¡Gracias! Recibimos tu mensaje y te responderemos a la brevedad.",
+    "faqTitle": "Preguntas frecuentes"
+  },
+  "faq": [
+    {
+      "q": "¿Qué hace Perez Marzo Systems Development?",
+      "a": "Desarrollamos soluciones informáticas y las licenciamos a nuestros clientes, con soporte y actualizaciones continuas."
+    },
+    {
+      "q": "¿Cómo funciona el licenciamiento?",
+      "a": "Accedés al sistema mediante una licencia. La facturación y los pagos se gestionan por nuestro sistema contable; el sitio es informativo."
+    },
+    {
+      "q": "¿Ofrecen soporte técnico?",
+      "a": "Sí. Contás con un equipo de soporte real que responde y acompaña. Escribinos desde la sección de contacto."
+    },
+    {
+      "q": "¿Puedo probar una solución antes de contratar?",
+      "a": "Contactanos por el canal comercial y coordinamos una demostración según tu caso."
+    }
+  ],
+  "footer": {
+    "tagline": "Desarrollamos y licenciamos software.",
+    "solutions": "Soluciones",
+    "company": "Empresa",
+    "contact": "Contacto",
+    "legal": "Todos los derechos reservados.",
+    "commercial": "Comercial",
+    "support": "Soporte"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "text": "La página que buscás no existe o fue movida.",
+    "cta": "Volver al inicio"
+  }
+}

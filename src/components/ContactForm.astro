@@ -1,0 +1,81 @@
+---
+import { useTranslations } from '@/i18n/ui';
+import type { Locale } from '@/lib/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const f = t.contact;
+const inputCls =
+  'mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-muted focus:border-brand';
+---
+
+<form id="contact-form" class="rounded-2xl border border-line bg-white p-6 md:p-8" novalidate>
+  <h3 class="text-xl">{f.formTitle}</h3>
+
+  <div class="mt-6 grid gap-4 sm:grid-cols-2">
+    <label class="block text-sm font-medium text-ink-soft">
+      {f.formName}
+      <input type="text" name="name" required autocomplete="name" class={inputCls} />
+    </label>
+    <label class="block text-sm font-medium text-ink-soft">
+      {f.formEmail}
+      <input type="email" name="email" required autocomplete="email" class={inputCls} />
+    </label>
+    <label class="block text-sm font-medium text-ink-soft">
+      {f.formCompany}
+      <input type="text" name="company" autocomplete="organization" class={inputCls} />
+    </label>
+    <label class="block text-sm font-medium text-ink-soft">
+      {f.formType}
+      <select name="type" class={inputCls}>
+        <option value="commercial">{f.formTypeCommercial}</option>
+        <option value="support">{f.formTypeSupport}</option>
+      </select>
+    </label>
+  </div>
+
+  <label class="mt-4 block text-sm font-medium text-ink-soft">
+    {f.formSubject}
+    <input type="text" name="subject" required class={inputCls} />
+  </label>
+
+  <label class="mt-4 block text-sm font-medium text-ink-soft">
+    {f.formMessage}
+    <textarea name="message" required rows="5" class={inputCls}></textarea>
+  </label>
+
+  <p class="mt-4 text-xs text-muted">{f.formNote}</p>
+
+  <button
+    type="submit"
+    class="mt-5 w-full rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-600 sm:w-auto"
+  >
+    {f.formSubmit}
+  </button>
+
+  <p id="contact-success" class="mt-4 hidden rounded-lg bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700" role="status">
+    {f.formSuccess}
+  </p>
+</form>
+
+<script>
+  // NOTA: envío maquetado. El backend real (endpoint + mail de confirmación)
+  // se define en una etapa posterior. Por ahora validamos en cliente y
+  // mostramos el mensaje de éxito sin enviar datos a ningún servidor.
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const success = document.getElementById('contact-success');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    // TODO: reemplazar por POST al endpoint de contacto cuando exista.
+    form.reset();
+    success?.classList.remove('hidden');
+    success?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

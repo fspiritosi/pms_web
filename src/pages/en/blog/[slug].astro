@@ -1,0 +1,41 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogPost from '@/components/pages/BlogPost.astro';
+import { getBlogPosts } from '@/lib/content';
+
+export const getStaticPaths = (async () => {
+  const posts = await getBlogPosts('en');
+  return posts.map(({ entry, slug }) => ({
+    params: { slug },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const locale = 'en' as const;
+const { entry } = Astro.props;
+const { slug } = Astro.params;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: entry.data.pubDate.toISOString(),
+  inLanguage: 'en-US',
+  author: { '@type': 'Organization', name: 'Perez Marzo Systems Development' },
+  publisher: { '@type': 'Organization', name: 'Perez Marzo Systems Development' },
+};
+---
+
+<BaseLayout
+  title={`${entry.data.title} · PMS`}
+  description={entry.data.description}
+  locale={locale}
+  esPath={`/blog/${slug}/`}
+  enPath={`/en/blog/${slug}/`}
+  ogImage={entry.data.image}
+  jsonLd={[articleJsonLd]}
+>
+  <BlogPost locale={locale} entry={entry} />
+</BaseLayout>

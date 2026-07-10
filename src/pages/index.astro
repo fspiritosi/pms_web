@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HomePage from '@/components/pages/HomePage.astro';
+import { useTranslations } from '@/i18n/ui';
+
+const locale = 'es' as const;
+const t = useTranslations(locale);
+---
+
+<BaseLayout
+  title={`${t.home.heroTitle} · PMS`}
+  description={t.home.heroSubtitle}
+  locale={locale}
+  esPath="/"
+  enPath="/en/"
+>
+  <HomePage locale={locale} />
+</BaseLayout>

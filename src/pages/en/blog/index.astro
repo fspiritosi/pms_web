@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogPage from '@/components/pages/BlogPage.astro';
+import { useTranslations } from '@/i18n/ui';
+
+const locale = 'en' as const;
+const t = useTranslations(locale);
+---
+
+<BaseLayout
+  title={`${t.blog.title} · PMS`}
+  description={t.blog.subtitle}
+  locale={locale}
+  esPath="/blog/"
+  enPath="/en/blog/"
+>
+  <BlogPage locale={locale} />
+</BaseLayout>

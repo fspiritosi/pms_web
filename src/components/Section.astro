@@ -1,0 +1,15 @@
+---
+interface Props {
+  id?: string;
+  variant?: 'default' | 'soft';
+  class?: string;
+}
+const { id, variant = 'default', class: className = '' } = Astro.props;
+const bg = variant === 'soft' ? 'bg-surface-soft' : 'bg-surface';
+---
+
+<section id={id} class:list={['py-16 md:py-24', bg, className]}>
+  <div class="container-pms">
+    <slot />
+  </div>
+</section>

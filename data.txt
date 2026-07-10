@@ -1,0 +1,38 @@
+Resumen de brief del cliente
+
+Dominio final: pms.net.ar (lo provee el cliente)
+
+1- ¿Qué páginas o secciones consideran que tienen que estar presentes?
+(Inicio, Nosotros, servicios, contacto, etc.)
+Soluciones (acá despliega los sistemas que tengamos, por ahora PMS)
+Empresa (Despliega nosotros y blog, ej.)
+Contacto (Comercial, Soporte)
+
+2- ¿Una vez creada, quieren poder editar o modificar texto o imágenes sin intervención técnica o lleva algún blog?
+El blog tipo noticias seguro, el resto, si no es complicado estaría bueno, pero si no, es como hoy tenemos en www.perezmarzo.com.ar, solo agrego noticias (eso colabora a los buscadores de lo que hacemos).
+
+3- ¿Lleva formulario de contacto con confirmación por mail a quien lo envía?
+sí
+
+4- ¿Solo una web informativa con el link a login o también tiene que tener alguna pasarela de pagos?
+Pagos no, la idea es llevarlo por el sistema contable.
+
+5- Los textos y las imágenes las van a proveer enteramente Uds.?
+sí
+
+6- En cuantos idiomas se debe desarrollar el sitio?
+Español e inglés
+
+7- ¿Además de imágenes y texto, lleva videos?
+No es la idea, posiblemente armemos un canal de YouTube con las ayudas necesarias para los casos que pudieran darse, más que nada para ayuda al servicio de ayuda.
+
+8- Se tiene que conectar con herramientas tipo WhatsApp?
+En principio sería bueno un boot útil, sin tantas vueltas, quizá al final que se conecte a un WS, pero por API cierto? O sea, no a nuestro número... ¿se puede? El sistema va a tener quizá algo de eso, pero la página, solo que pueda preguntar y respuestas y sino que el contacto mande un mail o cuadro de mensaje.
+
+9- El sitio se tienen que optimizar para buscadores y para AI?
+sí
+
+Detalle del cliente
+
+Es una empresa que se dedica al licenciamiento de software. Desarrollan soluciones informáticas y las licencian a sus clientes.
+

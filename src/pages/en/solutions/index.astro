@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SolutionsPage from '@/components/pages/SolutionsPage.astro';
+import { useTranslations } from '@/i18n/ui';
+
+const locale = 'en' as const;
+const t = useTranslations(locale);
+---
+
+<BaseLayout
+  title={`${t.solutions.title} · PMS`}
+  description={t.solutions.subtitle}
+  locale={locale}
+  esPath="/soluciones/"
+  enPath="/en/solutions/"
+>
+  <SolutionsPage locale={locale} />
+</BaseLayout>

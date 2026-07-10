@@ -1,0 +1,137 @@
+---
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import SolutionCard from '@/components/SolutionCard.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { useTranslations, path } from '@/i18n/ui';
+import { getSolutions, getBlogPosts } from '@/lib/content';
+import type { Locale } from '@/lib/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const solutions = await getSolutions(locale);
+const posts = (await getBlogPosts(locale)).slice(0, 3);
+const solutionsBase = path('solutions', locale);
+const blogBase = path('blog', locale);
+---
+
+<!-- Hero -->
+<section class="relative overflow-hidden border-b border-line bg-surface">
+  <div
+    class="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-brand-50 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="container-pms relative grid gap-10 py-20 md:grid-cols-2 md:items-center md:py-28">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wider text-brand">{t.home.heroKicker}</p>
+      <h1 class="mt-4 text-4xl leading-[1.05] md:text-6xl">{t.home.heroTitle}</h1>
+      <p class="mt-6 max-w-xl text-lg text-ink-soft">{t.home.heroSubtitle}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={solutionsBase} class="rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-600">
+          {t.home.heroCtaPrimary}
+        </a>
+        <a href={path('contact', locale)} class="rounded-lg border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-brand hover:text-brand">
+          {t.home.heroCtaSecondary}
+        </a>
+      </div>
+    </div>
+    <div class="relative hidden md:block">
+      <div class="rounded-2xl border border-line bg-white p-8 shadow-xl">
+        <img src="/logos/pms-dark.png" alt={t.nav.home} width="360" height="150" class="mx-auto w-full max-w-xs" />
+        <div class="mt-6 h-1 w-full rounded-full bg-gradient-to-r from-brand to-brand-100"></div>
+        <p class="mt-6 text-center text-sm text-muted">{t.footer.tagline}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Soluciones -->
+<Section>
+  <SectionHeading kicker={t.home.heroKicker} title={t.home.solutionsTitle} subtitle={t.home.solutionsSubtitle} />
+  <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      solutions.map((s) => (
+        <SolutionCard
+          locale={locale}
+          title={s.entry.data.title}
+          tagline={s.entry.data.tagline}
+          summary={s.entry.data.summary}
+          href={`${solutionsBase}${s.slug}/`}
+          available={s.entry.data.available}
+        />
+      ))
+    }
+  </div>
+  <div class="mt-10">
+    <a href={solutionsBase} class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+      {t.home.solutionsCta}
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</Section>
+
+<!-- Por qué PMS -->
+<Section variant="soft">
+  <SectionHeading title={t.home.whyTitle} align="center" />
+  <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      t.home.why.map((item, i) => (
+        <div class="rounded-xl border border-line bg-white p-6">
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 font-display font-semibold text-brand">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <h3 class="mt-4 text-lg">{item.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{item.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</Section>
+
+<!-- Noticias -->
+{
+  posts.length > 0 && (
+    <Section>
+      <SectionHeading title={t.home.newsTitle} />
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {posts.map((p) => (
+          <BlogCard
+            locale={locale}
+            title={p.entry.data.title}
+            description={p.entry.data.description}
+            href={`${blogBase}${p.slug}/`}
+            pubDate={p.entry.data.pubDate}
+            tags={p.entry.data.tags}
+          />
+        ))}
+      </div>
+      <div class="mt-10">
+        <a href={blogBase} class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+          {t.home.newsCta}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </Section>
+  )
+}
+
+<!-- CTA banner -->
+<Section>
+  <div class="relative overflow-hidden rounded-2xl bg-ink px-8 py-14 text-center md:py-16">
+    <div class="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+      <div class="absolute -left-10 top-0 h-40 w-40 rounded-full bg-brand blur-3xl"></div>
+      <div class="absolute -right-10 bottom-0 h-40 w-40 rounded-full bg-brand blur-3xl"></div>
+    </div>
+    <div class="relative">
+      <h2 class="text-3xl text-white md:text-4xl">{t.home.ctaBannerTitle}</h2>
+      <p class="mx-auto mt-4 max-w-xl text-white/70">{t.home.ctaBannerText}</p>
+      <a href={path('contact', locale)} class="mt-8 inline-block rounded-lg bg-brand px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-600">
+        {t.home.ctaBannerButton}
+      </a>
+    </div>
+  </div>
+</Section>

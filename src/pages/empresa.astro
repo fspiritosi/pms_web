@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AboutPage from '@/components/pages/AboutPage.astro';
+import { useTranslations } from '@/i18n/ui';
+
+const locale = 'es' as const;
+const t = useTranslations(locale);
+---
+
+<BaseLayout
+  title={`${t.about.title} · PMS`}
+  description={t.about.subtitle}
+  locale={locale}
+  esPath="/empresa/"
+  enPath="/en/company/"
+>
+  <AboutPage locale={locale} />
+</BaseLayout>

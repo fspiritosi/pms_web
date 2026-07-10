@@ -1,0 +1,28 @@
+# Perez Marzo Systems Development (PMS)
+
+> Empresa dedicada al desarrollo y licenciamiento de software. Desarrollamos soluciones informáticas y las licenciamos a nuestros clientes, con soporte y actualizaciones continuas. Company that develops and licenses software solutions to its clients.
+
+Idiomas / Languages: Español (es-AR, raíz) e Inglés (en-US, bajo /en/).
+Dominio / Domain: https://pms.net.ar
+
+## Soluciones / Solutions
+
+- [Soluciones (ES)](https://pms.net.ar/soluciones/): Sistemas que desarrollamos y licenciamos.
+- [PMS (ES)](https://pms.net.ar/soluciones/pms/): Nuestra plataforma de gestión.
+- [Solutions (EN)](https://pms.net.ar/en/solutions/): Systems we develop and license.
+
+## Empresa / Company
+
+- [Nosotros (ES)](https://pms.net.ar/empresa/) · [About (EN)](https://pms.net.ar/en/company/)
+- [Noticias (ES)](https://pms.net.ar/blog/) · [News (EN)](https://pms.net.ar/en/blog/)
+
+## Contacto / Contact
+
+- [Contacto (ES)](https://pms.net.ar/contacto/) · [Contact (EN)](https://pms.net.ar/en/contact/)
+- Comercial / Sales: comercial@pms.net.ar
+- Soporte / Support: soporte@pms.net.ar
+
+## Notas / Notes
+
+- Sitio informativo. El acceso al sistema es por licencia; pagos y facturación se gestionan fuera del sitio.
+- Informational website. System access is license-based; billing is handled off-site.

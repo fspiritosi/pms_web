@@ -1,0 +1,68 @@
+---
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import FaqAccordion from '@/components/FaqAccordion.astro';
+import { useTranslations } from '@/i18n/ui';
+import { site, type Locale } from '@/lib/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const c = t.contact;
+
+const channels = [
+  {
+    title: c.commercialTitle,
+    text: c.commercialText,
+    email: site.email.comercial,
+  },
+  {
+    title: c.supportTitle,
+    text: c.supportText,
+    email: site.email.soporte,
+  },
+];
+---
+
+<Section>
+  <SectionHeading kicker={t.nav.contact} title={c.title} subtitle={c.subtitle} />
+
+  <div class="mt-12 grid gap-10 lg:grid-cols-[1fr_1.3fr]">
+    <!-- Canales -->
+    <div class="space-y-5">
+      {
+        channels.map((ch) => (
+          <div class="rounded-xl border border-line bg-white p-6">
+            <h3 class="text-lg">{ch.title}</h3>
+            <p class="mt-2 text-sm text-ink-soft">{ch.text}</p>
+            <a href={`mailto:${ch.email}`} class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2.5" y="4" width="15" height="12" rx="2" stroke="currentColor" stroke-width="1.5" />
+                <path d="m3 5 7 5 7-5" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              {ch.email}
+            </a>
+          </div>
+        ))
+      }
+      <div class="rounded-xl bg-surface-soft p-6">
+        <p class="text-sm text-ink-soft">{site.phone}</p>
+        <p class="mt-1 text-sm text-muted">{site.domain}</p>
+      </div>
+    </div>
+
+    <!-- Formulario -->
+    <ContactForm locale={locale} />
+  </div>
+
+  <!-- FAQ -->
+  <div class="mt-20 max-w-3xl">
+    <h2 class="text-2xl">{c.faqTitle}</h2>
+    <div class="mt-6">
+      <FaqAccordion items={t.faq} />
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ContactPage from '@/components/pages/ContactPage.astro';
+import { useTranslations } from '@/i18n/ui';
+
+const locale = 'es' as const;
+const t = useTranslations(locale);
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={`${t.contact.title} · PMS`}
+  description={t.contact.subtitle}
+  locale={locale}
+  esPath="/contacto/"
+  enPath="/en/contact/"
+  jsonLd={[faqJsonLd]}
+>
+  <ContactPage locale={locale} />
+</BaseLayout>

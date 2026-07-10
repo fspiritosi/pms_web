@@ -1,0 +1,70 @@
+---
+import { site, type Locale } from '@/lib/site';
+import { useTranslations, path } from '@/i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const year = 2026;
+
+const columns = [
+  {
+    title: t.footer.solutions,
+    links: [{ label: 'PMS', href: `${path('solutions', locale)}pms/` }],
+  },
+  {
+    title: t.footer.company,
+    links: [
+      { label: t.nav.about, href: path('about', locale) },
+      { label: t.nav.blog, href: path('blog', locale) },
+    ],
+  },
+  {
+    title: t.footer.contact,
+    links: [
+      { label: t.footer.commercial, href: `mailto:${site.email.comercial}` },
+      { label: t.footer.support, href: `mailto:${site.email.soporte}` },
+    ],
+  },
+];
+---
+
+<footer class="mt-24 border-t border-line bg-ink text-white">
+  <div class="container-pms grid gap-10 py-14 md:grid-cols-[1.5fr_repeat(3,1fr)]">
+    <div>
+      <img src="/logos/pms-light.png" alt={site.shortName} width="120" height="48" class="h-8 w-auto" />
+      <p class="mt-4 max-w-xs text-sm text-white/60">{t.footer.tagline}</p>
+      <a href={path('contact', locale)} class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-100 hover:text-white">
+        {t.nav.contact}
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    {
+      columns.map((col) => (
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-white/40">{col.title}</h4>
+          <ul class="mt-4 space-y-2.5">
+            {col.links.map((l) => (
+              <li>
+                <a href={l.href} class="text-sm text-white/70 transition-colors hover:text-white">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="container-pms flex flex-col items-center justify-between gap-2 py-6 text-xs text-white/50 sm:flex-row">
+      <p>© {year} {site.name}. {t.footer.legal}</p>
+      <p>{site.domain}</p>
+    </div>
+  </div>
+</footer>

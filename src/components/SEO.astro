@@ -1,0 +1,105 @@
+---
+import { site, type Locale } from '@/lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  /** Path (con base /) de esta misma página en cada idioma, para hreflang. */
+  esPath: string;
+  enPath: string;
+  /** Imagen para Open Graph (ruta absoluta desde /public o URL completa). */
+  ogImage?: string;
+  noindex?: boolean;
+  /** Objetos JSON-LD extra (BlogPosting, FAQPage, etc.). */
+  jsonLd?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  locale,
+  esPath,
+  enPath,
+  ogImage = '/logos/pms-dark.png',
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const esUrl = new URL(esPath, site.url).href;
+const enUrl = new URL(enPath, site.url).href;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, site.url).href;
+const ogLocale = locale === 'es' ? 'es_AR' : 'en_US';
+
+// JSON-LD base: Organization + WebSite (presente en todas las páginas).
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  alternateName: site.shortName,
+  url: site.url,
+  logo: new URL('/logos/pms-dark.png', site.url).href,
+  description:
+    locale === 'es'
+      ? 'Empresa dedicada al desarrollo y licenciamiento de software.'
+      : 'Company dedicated to software development and licensing.',
+  email: site.email.comercial,
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: locale === 'es' ? 'ventas' : 'sales',
+      email: site.email.comercial,
+      availableLanguage: ['Spanish', 'English'],
+    },
+    {
+      '@type': 'ContactPoint',
+      contactType: locale === 'es' ? 'soporte' : 'customer support',
+      email: site.email.soporte,
+      availableLanguage: ['Spanish', 'English'],
+    },
+  ],
+};
+
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url,
+  inLanguage: [locale === 'es' ? 'es-AR' : 'en-US'],
+};
+
+const structuredData = [organization, website, ...jsonLd];
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- hreflang: alternates ES/EN + x-default -->
+<link rel="alternate" hreflang="es-AR" href={esUrl} />
+<link rel="alternate" hreflang="en-US" href={enUrl} />
+<link rel="alternate" hreflang="x-default" href={esUrl} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:image" content={ogImageUrl} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+{
+  structuredData.map((data) => (
+    <script type="application/ld+json" set:html={JSON.stringify(data)} />
+  ))
+}

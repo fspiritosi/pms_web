@@ -1,0 +1,38 @@
+---
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { useTranslations, path } from '@/i18n/ui';
+import { getBlogPosts } from '@/lib/content';
+import type { Locale } from '@/lib/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const posts = await getBlogPosts(locale);
+const blogBase = path('blog', locale);
+---
+
+<Section>
+  <SectionHeading kicker={t.nav.company} title={t.blog.title} subtitle={t.blog.subtitle} />
+  {
+    posts.length > 0 ? (
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map((p) => (
+          <BlogCard
+            locale={locale}
+            title={p.entry.data.title}
+            description={p.entry.data.description}
+            href={`${blogBase}${p.slug}/`}
+            pubDate={p.entry.data.pubDate}
+            tags={p.entry.data.tags}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="mt-10 text-ink-soft">{t.blog.empty}</p>
+    )
+  }
+</Section>
